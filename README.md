@@ -35,4 +35,4 @@ interface ImageMetaData = {
 
 ## preview
 
-![](./preview.gif)
+![](https://dpubstatic.udache.com/static/dpubimg/YbfiRQotFy/preview.gif)

@@ -90,10 +90,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.18.13.tgz#6ad4d9db59e6b3faf98dcfe4ca9d2aec84443277"
   integrity sha512-Z6/KzgyWOga3pJNS42A+zayjhPbf2zM3hegRQaOPnLOzEi86VV++6FLDWgR1LGrVCRufP/ph2daa3tEa5br1zA==
 
-"@types/vscode@^1.66.0":
-  version "1.66.0"
-  resolved "https://registry.yarnpkg.com/@types/vscode/-/vscode-1.66.0.tgz#e90e1308ad103f2bd31b72c17b8031b4cec0713d"
-  integrity sha512-ZfJck4M7nrGasfs4A4YbUoxis3Vu24cETw3DERsNYtDZmYSYtk6ljKexKFKhImO/ZmY6ZMsmegu2FPkXoUFImA==
+"@types/vscode@1.65.0":
+  version "1.65.0"
+  resolved "http://artifactory.intra.xiaojukeji.com/artifactory/api/npm/npm/@types/vscode/-/vscode-1.65.0.tgz?dl=https%3A%2F%2Fregistry.npmmirror.com%2F%40types%2Fvscode%2F-%2Fvscode-1.65.0.tgz#042dd8d93c32ac62cb826cd0fa12376069d1f448"
+  integrity sha1-BC3Y2TwyrGLLgmzQ+hI3YGnR9Eg=
 
 "@typescript-eslint/eslint-plugin@^5.16.0":
   version "5.19.0"
