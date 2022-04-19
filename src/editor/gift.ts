@@ -10,7 +10,12 @@ export class GiftEditorProvider implements vscode.CustomTextEditorProvider {
     const provider = new GiftEditorProvider(context)
     const providerRegistration = vscode.window.registerCustomEditorProvider(
       GiftEditorProvider.viewType,
-      provider
+      provider,
+      {
+        webviewOptions: {
+          retainContextWhenHidden: true
+        }
+      }
     )
     return providerRegistration
   }

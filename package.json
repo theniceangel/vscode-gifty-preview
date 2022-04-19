@@ -8,6 +8,7 @@
   "engines": {
     "vscode": "^1.65.0"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/theniceangel/vscode-gifty-preview"
@@ -43,17 +44,17 @@
           "gifty"
         ],
         "icon": {
-          "light": "./gifty.svg",
-          "dark": "./gifty.svg"
+          "light": "gifty.svg",
+          "dark": "gifty.svg"
         }
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "yarn compile",
     "compile": "tsc -p ./tsconfig.json",
     "watch": "tsc -watch -p ./tsconfig.json",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "yarn compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },

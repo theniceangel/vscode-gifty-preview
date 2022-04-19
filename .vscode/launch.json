@@ -18,7 +18,7 @@
 			"skipFiles": [
 				"**/app/out/vs/**",
 			],
-			"preLaunchTask": "${defaultBuildTask}"
+			"preLaunchTask": "npm: watch"
 		},
 		{
 			"name": "Extension Tests",
