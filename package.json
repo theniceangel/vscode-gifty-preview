@@ -7,6 +7,11 @@
   "engines": {
     "vscode": "^1.65.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theniceangel/vscode-gifty-preview"
+  },
+  "homepage": "https://github.com/theniceangel/vscode-gifty-preview/blob/main/README.md",
   "categories": [
     "Other"
   ],
