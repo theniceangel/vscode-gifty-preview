@@ -2,6 +2,7 @@
   "name": "vscode-gifty-preview",
   "displayName": "vscode-gifty-preview",
   "description": "preview gifty file",
+  "icon": "gifty.png",
   "version": "0.0.1",
   "publisher": "theniceangel",
   "engines": {
