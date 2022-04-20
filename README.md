@@ -11,7 +11,6 @@ Provide a custom editor to render files which contains following data structure.
 ```ts
 interface ImageMetaData = {
   remoteUrl: string // image src
-  localFilePath: string // image file path in your computer
   name: string // image name
   width: number
   height: number
@@ -22,7 +21,6 @@ interface ImageMetaData = {
 [
   {
     "remoteUrl": "https://gift-pypu-cdn.didistatic.com/static/driver_miniprogram/do1_rDiZeZm36LdulEDn4P5U",
-    "localFilePath": "your image absolute path",
     "name": "123.png",
     "width": 1182,
     "height": 1182,
@@ -35,4 +33,4 @@ interface ImageMetaData = {
 
 ## preview
 
-![](https://dpubstatic.udache.com/static/dpubimg/YbfiRQotFy/preview.gif)
+![](https://dpubstatic.udache.com/static/dpubimg/W6Y9_DU9h/preview.gif)

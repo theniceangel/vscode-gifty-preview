@@ -3,7 +3,7 @@
   "displayName": "vscode-gifty-preview",
   "description": "preview gifty file",
   "icon": "gifty.png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "theniceangel",
   "engines": {
     "vscode": "^1.65.0"
