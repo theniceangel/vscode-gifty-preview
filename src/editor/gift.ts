@@ -1,9 +1,8 @@
 import * as vscode from 'vscode'
-import * as fs from 'fs'
 /**
  * Provider for gift image editors.
  *
- * Cat scratch editors are used for `.gifty` files, which are just json files.
+ * editors are used for `.gifty` files, which are just json files.
  */
 export class GiftEditorProvider implements vscode.CustomTextEditorProvider {
   public static register(context: vscode.ExtensionContext): vscode.Disposable {
@@ -69,10 +68,6 @@ export class GiftEditorProvider implements vscode.CustomTextEditorProvider {
         case 'copy':
           doClipBoard(e.text)
           break
-
-        case 'open':
-          doOpenImageInEditor(e.path)
-          break
         default:
           break
       }
@@ -82,14 +77,6 @@ export class GiftEditorProvider implements vscode.CustomTextEditorProvider {
       if (text) {
         vscode.env.clipboard.writeText(text)
         vscode.window.showInformationMessage('已复制到剪贴板')
-      }
-    }
-
-    const doOpenImageInEditor = (path: string) => {
-      if (path && fs.existsSync(path)) {
-        vscode.commands.executeCommand('vscode.open', vscode.Uri.file(path))
-      } else {
-        vscode.window.showErrorMessage('当前图片的路径不存在')
       }
     }
 

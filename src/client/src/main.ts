@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import directives from './directives/index'
+import MockData from './mock.json'
 
 const app = createApp(App)
 directives(app)
@@ -31,5 +32,5 @@ if (__IN_VSCODE_WEBVIEW__) {
   }
 } else {
   // mock data
-  app.provide('imagesMetaData', []).mount('#app')
+  app.provide('imagesMetaData', MockData).mount('#app')
 }

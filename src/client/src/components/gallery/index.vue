@@ -6,7 +6,6 @@ import { onMounted, ref, inject } from 'vue'
 
 type ImageMetaData = {
   remoteUrl: string
-  localFilePath: string
   size: string,
   width: number,
   height: number,
@@ -44,7 +43,7 @@ const getLargeSize = (width: number, height: number) => {
       <figcaption>
         <div class="gallery-image-name">{{ item.name }}</div>
         <div class="gallery-image-size">尺寸: {{ item.width }} x {{ item.height }} ({{ item.size }})</div>
-        <Menu :url="item.remoteUrl" :path="item.localFilePath" />
+        <Menu :url="item.remoteUrl" />
       </figcaption>
     </figure>
   </div>
