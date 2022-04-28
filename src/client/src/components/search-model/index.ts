@@ -1,1 +1,0 @@
-import type { App, DirectiveBinding } from 'vue'
