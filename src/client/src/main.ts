@@ -2,9 +2,12 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import directives from './directives/index'
 import MockData from './mock.json'
+import InstantSearch from 'vue-instantsearch/vue3/es'
 
 const app = createApp(App)
 directives(app)
+app.use(InstantSearch)
+
 
 if (__IN_VSCODE_WEBVIEW__) {
   // Handle messages sent from the extension to the webview
