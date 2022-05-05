@@ -1,21 +1,13 @@
  <template>
     <div class="search-model-wrapper" v-show="show" @click="closeFn">
         <div id="autocomplete" class="autocomplete"></div>
-        <!-- <ais-instant-search :search-client="searchClient" index-name="instant_search_demo_query_suggestions">
-            <ais-search-box />
-            <ais-hits>
-                <template v-slot:item="{ item }">
-                    <h2>{{ item.name }}</h2>
-                </template>
-            </ais-hits>
-        </ais-instant-search> -->
     </div>
-
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, inject } from 'vue'
-import createAutocomplate from './createAutocomplate'
+import {createAutocomplate } from '../../common/ts/createAutocomplate'
+import { ImageMetaData, createAutocompletePlugin  } from './autocompletePlugin'
 
 const emit = defineEmits(['close'])
 const closeFn = (e: any) => {
@@ -24,13 +16,20 @@ const closeFn = (e: any) => {
         emit('close')
     }
 }
+const submitFn = (query?: string, res?: ImageMetaData[]) => {
+    // console.log('Do sth before closing search panel if needed', query, res)
+    emit('close', res)
+}
 
 const props = defineProps({
     show: Boolean
 })
 
 onMounted(() => {
-    createAutocomplate()
+    createAutocomplate({ 
+        container: '#autocomplete',
+        basePlugin: createAutocompletePlugin({submitFn, perPage: 5})
+    })
 })
 
 </script>
@@ -43,23 +42,7 @@ onMounted(() => {
     position absolute
     background-color #656c85cc
     top 0
-    // padding 20%
-// .autocomplete
-//     color #262627
-//     font-family inherit
-//     font-size 16px
-//     font-weight 400
-//     line-height 1em
-//     margin 0
-//     padding 0
-//     text-align left
-//     width 300px
-//     height 50px
-//     background darkslategrey
-</style>
-
-<style lang="stylus">
-.autocomplete.autocomplete
+.autocomplete
     width 600px
     height 600px
     overflow scroll
@@ -68,6 +51,9 @@ onMounted(() => {
     button
         background none
         border none
+</style>
+
+<style lang="stylus">
 .ais-InstantSearch
     width 600px
     height 600px

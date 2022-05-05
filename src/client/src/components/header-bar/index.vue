@@ -1,10 +1,4 @@
 <script setup lang="ts">
-// import algoliasearch from 'algoliasearch'
-// const client = algoliasearch('YourApplicationID', 'YourAdminAPIKey', {
-//     hosts: [{ url: 'yourapplication.example.net' }],
-// });
-
-// const index = client.initIndex('your_index_name');
 </script>
 <template>
     <div class="header-bar-wrapper">
