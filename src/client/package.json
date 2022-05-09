@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "fuzzysearch": "^1.0.3",
+    "fuzzysort": "^1.9.0",
     "lightgallery": "^2.4.0"
   },
   "devDependencies": {

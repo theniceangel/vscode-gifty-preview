@@ -2,6 +2,8 @@
 import { AutocompletePlugin } from '@algolia/autocomplete-js';
 import mocData from '../../common/ts/mock';
 import { reactive } from "vue";
+import { h, render, Fragment } from 'preact';
+import fuzzysort from 'fuzzysort';
 
 const imgList = mocData;
 
@@ -11,7 +13,8 @@ type ImageMetaData = {
   width: number,
   height: number,
   name: string,
-  resourceKey: string
+  resourceKey: string,
+  highlight?: string
 };
 
 type GetProcessDataProps = {
@@ -47,16 +50,36 @@ const createAutocompletePlugin = (
           sourceId: 'links',
           getItems({ query }) {
             const items = imgList;
-            return items.filter(({ name }) =>
+            let results = fuzzysort.go(query, items, {
+              keys: ['name'],
+              // Create a custom combined score to sort by. -100 to the desc score makes it a worse match
+              scoreFn: a => Math.max(a[0]?a[0].score:-1000, a[1]?a[1].score-100:-1000)
+            });
+
+            let xx1 = results.map(result => {
+              let highlight = fuzzysort.highlight(result[0]);
+              return {
+                ...result.obj,
+                highlight
+              };
+            });
+            let xx2 = xx1.filter(item=>item.highlight);
+
+            return xx2.length && xx2.filter(({ name }) =>
               name.toLowerCase().includes(query.toLowerCase())
-            );
+            ) || [];
           },
           getItemUrl({ item }) {
             return item.remoteUrl;
           },
+          // templates: {
+          //   item({ item }) {
+          //     return item.name;
+          //   },
+          // },
           templates: {
-            item({ item }) {
-              return item.name;
+            item({item}) {
+              return `${item.highlight}`
             },
           },
         },
