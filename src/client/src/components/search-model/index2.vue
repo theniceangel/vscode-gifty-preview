@@ -9,8 +9,9 @@ import { onMounted, ref, inject, h, Fragment, render } from 'vue'
 import { createAutocompletePlugin } from './autocompletePlugin'
 import { autocomplete, AutocompletePlugin } from '@algolia/autocomplete-js';
 import '@algolia/autocomplete-theme-classic';
-import fuzzysort from 'fuzzysort';
+import fuzzysort, { highlight } from 'fuzzysort';
 import mocData from '../../common/ts/mock';
+import Highlight from './template.vue';
 
 const imgList = mocData;
 
@@ -33,7 +34,7 @@ type ParamsType = {
 };
 
 const createAutocomplate = (params: ParamsType) => {
-    autocomplete({
+    autocomplete<ImageMetaData>({
         container: params.container,
         placeholder: 'Search Text',
         openOnFocus: true,
@@ -59,9 +60,10 @@ const createAutocomplate = (params: ParamsType) => {
                         });
                         let xx2 = xx1.filter(item => item.highlight);
 
-                        return xx2.length && xx2.filter(({ name }) =>
+                        return xx2.filter(({ name }) =>
                             name.toLowerCase().includes(query.toLowerCase())
-                        ) || [];
+                        )||[];
+                        // return items
                     },
                     getItemUrl({ item }) {
                         return item.remoteUrl;
@@ -72,26 +74,22 @@ const createAutocomplate = (params: ParamsType) => {
                     //   },
                     // },
                     templates: {
-                        item({ item, html }) {
-                            // return html `<p v-html=${item.highlight}></p>`
-                            return html `<p>${item.highlight}</p>`;
+                        item({ item }) {
+                            // console.log(item.highlight)
+                            // return <Highlight htmlSting={item.highlight}></Highlight>
+                            debugger
+                            return Highlight.render(item.highlight)
+                            // return `<p>${item.highlight}</p>`;
+                            // return (<p>{item.highlight}</p>)
+                            // return (<p v-html={item.highlight}></p>)
+                            // return html`<p v-html=${item.highlight}></p>`
+                            // return html`<p>${item.highlight}</p>`;
                         },
                     },
-                    // templates: {
-                    //     item({ item, createElement, Fragment }) {
-                    //         debugger
-                    //         return createElement(Fragment, {}, item.highlight);
-                    //     },
-                    // }
                 },
             ];
         },
-        // render({ sections, render, html }, root) {
-        //     render(
-        //         html `<p v-html={item.highlight}></p>`,
-        //         root
-        //     );
-        // },
+        // renderer: { createElement: h, Fragment, render }
     });
 };
 const emit = defineEmits(['close'])

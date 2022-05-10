@@ -1,9 +1,10 @@
 /** @jsx h */
 import { AutocompletePlugin } from '@algolia/autocomplete-js';
 import mocData from '../../common/ts/mock';
-import { reactive } from "vue";
-import { h, render, Fragment } from 'preact';
+import { reactive, h, render } from "vue";
 import fuzzysort from 'fuzzysort';
+
+import HighlightComp from './template';
 
 const imgList = mocData;
 
@@ -42,7 +43,7 @@ const changeSearchData = (query: string, res: ImageMetaData[]) => {
 // 创建 AutocompletePlugin：处理 autocomplate 的 source 数据及钩子函数
 const createAutocompletePlugin = (
   options: GetProcessDataProps = {}
-): AutocompletePlugin<ImageMetaData, undefined> => {
+): AutocompletePlugin<ImageMetaData, ImageMetaData[]> => {
   return {
     getSources() {
       return [
@@ -78,8 +79,16 @@ const createAutocompletePlugin = (
           //   },
           // },
           templates: {
-            item({item}) {
-              return `${item.highlight}`
+            item({item, html}) {
+              debugger
+              return <HighlightComp htmlString={item.highlight}></HighlightComp>;
+              // return HighlightComp.render(item.highlight)
+              // return item.name;
+              // return (<p v-html={item.highlight}></p>);
+              // return html`${item.highlight}`;
+              // return html`<p v-html=${item.highlight}></p>`
+              // return html`<p>${item.highlight}</p>`;
+              // return `<p>${item.highlight}</p>`;
             },
           },
         },
@@ -94,6 +103,7 @@ const createAutocompletePlugin = (
       changeSearchData(query, res);
       options.submitFn && options.submitFn(query, res); // 触发搜索弹窗关闭的回调
     },
+    // renderer: { createElement: h, render }
   };
 };
 

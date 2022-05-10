@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import gallery from './components/gallery/index.vue'
 import searchBtn from './components/search-btn/index.vue'
 import headerBar from './components/header-bar/index.vue'
-import searchModel from './components/search-model/index2.vue'
+import searchModel from './components/search-model/index.vue'
 
 const show = ref(false)
 const openSearchModel = () => {
