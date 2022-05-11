@@ -1,35 +1,36 @@
  <template>
-    <div class="search-model-wrapper" v-show="show" @click="closeFn">
-        <div id="autocomplete" class="autocomplete"></div>
-    </div>
+  <div class="search-model-wrapper" v-show="show" @click="closeFn">
+    <div id="autocomplete" class="autocomplete"></div>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref, inject } from 'vue'
-import {createAutocomplate } from '../../common/ts/createAutocomplate'
-import { ImageMetaData, createAutocompletePlugin  } from './autocompletePlugin'
+import { createAutocomplate } from '../../common/ts/createAutocomplate'
+import { ImageMetaData, createAutocompletePlugin } from './autocompletePlugin'
 
 const emit = defineEmits(['close'])
 const closeFn = (e: any) => {
-    console.log('on-search-btn-click', e.target)
-    if (e.target.className === 'search-model-wrapper') {
-        emit('close')
-    }
+  console.log('on-search-btn-click', e.target)
+  if (e.target.className === 'search-model-wrapper') {
+    emit('close')
+  }
 }
 const submitFn = (query?: string, res?: ImageMetaData[]) => {
-    // console.log('Do sth before closing search panel if needed', query, res)
-    emit('close', res)
+  // console.log('Do sth before closing search panel if needed', query, res)
+  emit('close', res)
 }
 
 const props = defineProps({
-    show: Boolean
+  show: Boolean
 })
 
 onMounted(() => {
-    createAutocomplate({ 
-        container: '#autocomplete',
-        basePlugin: createAutocompletePlugin({submitFn, perPage: 5})
-    })
+  createAutocomplate({
+    container: '#autocomplete',
+    placeholder: 'Search Text',
+    plugins: [createAutocompletePlugin({ submitFn, perPage: 5 })]
+  })
 })
 
 </script>

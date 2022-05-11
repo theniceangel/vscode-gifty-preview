@@ -1,21 +1,19 @@
-import { autocomplete, AutocompletePlugin } from '@algolia/autocomplete-js';
-import '@algolia/autocomplete-theme-classic';
+import { autocomplete, AutocompletePlugin } from "@algolia/autocomplete-js";
+import "@algolia/autocomplete-theme-classic";
 
+import { h, Fragment, render } from 'vue';
 
-type BasePlugin = AutocompletePlugin<any, undefined>;
-type Container = string | HTMLElement;
-
-type ParamsType = {
-  container: Container,
-  basePlugin: BasePlugin
+type OptionsType = {
+  container: string | HTMLElement;
+  placeholder: string;
+  plugins: AutocompletePlugin<any, any>[] | undefined;
 };
 
-const createAutocomplate = (params: ParamsType) => {
-    autocomplete({
-        container: params.container,
-        placeholder: 'Search Text',
-        plugins: [params.basePlugin]
-    });
+const createAutocomplate = (options: OptionsType) => {
+  autocomplete({
+    ...options,
+    // @ts-ignore
+    renderer: { createElement: h, Fragment, render }
+  });
 };
 export { createAutocomplate };
-

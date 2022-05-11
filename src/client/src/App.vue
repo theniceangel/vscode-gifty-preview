@@ -14,12 +14,12 @@ const openSearchModel = () => {
 
 <template>
   <div>
-    <headerBar>
-      <searchBtn @onSearchBtnClick="openSearchModel" />
-    </headerBar>
-    <gallery class="gallery-wrapper" />
+    <header-bar>
+      <search-btn @onSearchBtnClick="openSearchModel" />
+    </header-bar>
+    <gallery class="gallery-wrapper"></gallery>
   </div>
-  <searchModel :show="show" @close="show = false"></searchModel>
+  <search-model :show="show" @close="show = false"></search-model>
 </template>
 
 <style>
