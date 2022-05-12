@@ -3,25 +3,25 @@ import IconSearchNormal from './icon-search-normal.vue'
 
 const emit = defineEmits(['on-search-btn-click'])
 const searchFn = () => {
-    console.log('on-search-btn-click')
-    emit('on-search-btn-click')
+  console.log('on-search-btn-click')
+  emit('on-search-btn-click')
 }
 </script>
 <template>
-    <div class="search-button" @click.stop="searchFn">
-        <span class="button-container">
-            <icon-search-normal class="search-icon" />
-            <span class="button-placeholder">Search</span>
-        </span>
-        <span class="button-keys">
-            <span class="button-key">⌘</span>
-            <span class="button-key">S</span>
-        </span>
-    </div>
+  <div class="search-button" @click.stop="searchFn">
+    <span class="button-container">
+      <icon-search-normal class="search-icon" />
+      <span class="button-placeholder">Search</span>
+    </span>
+    <span class="button-keys">
+      <span class="button-key">⌘</span>
+      <span class="button-key">S</span>
+    </span>
+  </div>
 </template>
 <style lang="stylus">
     .search-icon
-       color #f57d46
+       color var(--c-main-color)
 </style>
 <style lang="stylus" scoped>
     .search-wrapper

@@ -37,28 +37,38 @@ onMounted(() => {
 
 <style lang="stylus" scoped>
 .search-model-wrapper
-    width 100%
-    height 100vh
-    overflow hidden
-    position absolute
-    background-color #656c85cc
-    top 0
+  width 100%
+  height 100vh
+  overflow hidden
+  position absolute
+  background-color #656c85cc
+  top 0
 .autocomplete
-    width 600px
-    height 600px
-    overflow scroll
-    position relative
-    margin 100px auto
-    button
-        background none
-        border none
+  width 600px
+  height 600px
+  overflow scroll
+  position relative
+  margin 100px auto
+  button
+      background none
+      border none
 </style>
 
 <style lang="stylus">
 .ais-InstantSearch
-    width 600px
-    height 600px
-    overflow scroll
-    position relative
-    margin 100px auto
+  width 600px
+  height 600px
+  overflow scroll
+  position relative
+  margin 100px auto
+.aa-Label svg
+  color var(--c-main-color)
+.aa-Item b
+  color var(--c-main-color)
+.aa-Form
+  border: 1px solid transparent
+  box-shadow: none
+.aa-Form:focus, .aa-Form:active, .aa-Form:focus-within
+  border: 1px solid var(--c-main-color)
+  box-shadow: none
 </style>
