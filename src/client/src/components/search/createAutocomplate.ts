@@ -1,19 +1,16 @@
-import { autocomplete, AutocompletePlugin } from "@algolia/autocomplete-js";
+import { BaseItem } from "@algolia/autocomplete-core";
+import { autocomplete, AutocompleteOptions } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 
-import { h, Fragment, render } from 'vue';
+import { h, Fragment, render } from "vue";
 
-type OptionsType = {
-  container: string | HTMLElement;
-  placeholder: string;
-  plugins: AutocompletePlugin<any, any>[] | undefined;
-};
-
-const createAutocomplate = (options: OptionsType) => {
+const createAutocomplate = (options: AutocompleteOptions<BaseItem>) => {
   autocomplete({
     ...options,
+    autoFocus: true,
+    openOnFocus: true,
     // @ts-ignore
-    renderer: { createElement: h, Fragment, render }
+    renderer: { createElement: h, Fragment, render },
   });
 };
 export { createAutocomplate };

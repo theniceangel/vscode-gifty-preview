@@ -5,27 +5,19 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, inject } from 'vue'
+import { onMounted, inject } from 'vue'
 import { createAutocomplate } from './createAutocomplate'
 import { ImageMetaData, createAutocompletePlugin } from './autocompletePlugin'
 
-let imgList = ref(new Array())
-setTimeout(() => {
-  let proxy: any = inject('imagesMetaData') as ImageMetaData[]
-  debugger
-  imgList.value = proxy && proxy.value
-  console.log(333333, imgList)
-}, 300)
+const imgList = inject('imagesMetaData') as ImageMetaData[]
 
 const emit = defineEmits(['close'])
 const closeFn = (e: any) => {
-  // console.log('on-search-btn-click', e.target)
   if (e.target.className === 'search-model-wrapper') {
     emit('close')
   }
 }
 const submitFn = (query?: string, res?: ImageMetaData[]) => {
-  // console.log('Do sth before closing search panel if needed', query, res)
   emit('close', res)
 }
 
@@ -37,7 +29,7 @@ onMounted(() => {
   createAutocomplate({
     container: '#autocomplete',
     placeholder: 'Search Text',
-    plugins: [createAutocompletePlugin({ submitFn, perPage: 5, data: imgList.value })]
+    plugins: [createAutocompletePlugin({ submitFn, perPage: 5, data: imgList })]
   })
 })
 
