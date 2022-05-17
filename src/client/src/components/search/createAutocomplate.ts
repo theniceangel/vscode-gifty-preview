@@ -1,7 +1,7 @@
 import { autocomplete, AutocompletePlugin } from "@algolia/autocomplete-js";
 import "@algolia/autocomplete-theme-classic";
 
-import { h, Fragment, render } from 'vue';
+import { h, Fragment, render } from "vue";
 
 type OptionsType = {
   container: string | HTMLElement;
@@ -13,7 +13,7 @@ const createAutocomplate = (options: OptionsType) => {
   autocomplete({
     ...options,
     // @ts-ignore
-    renderer: { createElement: h, Fragment, render }
+    renderer: { createElement: h, Fragment, render },
   });
 };
 export { createAutocomplate };
