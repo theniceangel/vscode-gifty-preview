@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import gallery from './components/gallery/index.vue'
 import searchBtn from './components/search/search-btn.vue'
 import headerBar from './components/header-bar/index.vue'
@@ -15,6 +15,18 @@ const toggleSearchHandler = (str: string) => {
     show.value = !show.value
   }
 }
+
+watch(show, (newV, oldV) => {
+  /* ... */
+  if(show) {
+    setTimeout(() => {
+      const input = document.querySelector<HTMLInputElement>('#autocomplete .aa-Input');
+      input && input.focus()
+      // input && input.select()
+    })
+  }
+})
+
 </script>
 
 <template>

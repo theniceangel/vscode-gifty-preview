@@ -11,8 +11,9 @@
 1. autocomplete 接入
 2. header-bar UI
 3. fuzzysort 分词接入
-4. 搜索整体逻辑mvp版本完成
-6. 无用文件和cosole删除
+4. 搜索面板打开时自动focus输入框
+5. 搜索词为空时submit=>reset画廊数据
+6. icons 统一管理
 7. 按键搜索(兼容 windows & Mac)
 8. 搜索结果不存在时不可返回画廊界面
 9. 搜索展示 图片缩略图

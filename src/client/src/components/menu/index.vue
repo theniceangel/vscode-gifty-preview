@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import IconCopy from './icon-copy.vue'
+import IconCopy from '../../common/icons/icon-copy.vue'
 import { vscodeWebviewAPI } from '../../vscode-webview-api'
 
 const props = defineProps({

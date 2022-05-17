@@ -106,8 +106,12 @@ const createAutocompletePlugin = (
     },
     onSubmit(e) {
       const query = e.state.query;
-      const res = e.state.collections[0].items;
-      if (query && res.length) {
+      /* 有搜索词返回搜索数据
+      *  无搜索词返回全部数据
+      *  有搜索词无搜索结果不返回
+      */
+      const res = query.trim() ? e.state.collections[0].items : imgList;
+      if (res.length) {
         changeSearchData(query, res);
         options.submitFn && options.submitFn(query, res); // 触发搜索弹窗关闭的回调
       }

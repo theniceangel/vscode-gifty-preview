@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import IconGifty from '../../common/icons/icon-gifty.vue'
 </script>
 <template>
     <div class="header-bar-wrapper">
         <div class="header-bar">
             <a href="/" class="icon">
-                <img src="./gifty.png" alt="">
+                <icon-gifty class="svg"/>
                 <span>vscode-gifty-preview</span>
             </a>
             <slot></slot>
@@ -32,7 +33,7 @@
         align-items center
         text-decoration none
         color #fff
-    img
+    .svg
         width 50px
         height 50px
 </style>
