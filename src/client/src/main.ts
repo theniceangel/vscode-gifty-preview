@@ -1,10 +1,14 @@
-import { createApp } from 'vue'
+import { createApp, ref } from 'vue'
 import App from './App.vue'
 import directives from './directives/index'
 import MockData from './mock.json'
 
 const app = createApp(App)
 directives(app)
+
+let data = ref(new Array())
+app.provide('imagesMetaData', data).mount('#app')
+console.log(1111111, data.value)
 
 if (__IN_VSCODE_WEBVIEW__) {
   // Handle messages sent from the extension to the webview
@@ -21,7 +25,8 @@ if (__IN_VSCODE_WEBVIEW__) {
     try {
       let json = JSON.parse(text)
       if (Array.isArray(json)) {
-        app.provide('imagesMetaData', json).mount('#app')
+        data.value = json
+        // app.provide('imagesMetaData', json).mount('#app')
       }
     } catch {
       invalidTextHandle()
@@ -32,5 +37,7 @@ if (__IN_VSCODE_WEBVIEW__) {
   }
 } else {
   // mock data
-  app.provide('imagesMetaData', MockData).mount('#app')
+  data.value = MockData
+  console.log(2222222, data.value)
+  // app.provide('imagesMetaData', MockData).mount('#app')
 }
