@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import gallery from './components/gallery/index.vue'
-import searchBtn from './components/search-btn/index.vue'
+import searchBtn from './components/search/search-btn.vue'
 import headerBar from './components/header-bar/index.vue'
-import searchModel from './components/search-model/index.vue'
+import searchModel from './components/search/search-model.vue'
 
 const show = ref(false)
-const openSearchModel = () => {
-  show.value = true
-  console.log('openSearchModel')
+const toggleSearchHandler = (str: string) => {
+  if(str === 'open') {
+    show.value = true
+  }else if(str === 'close') {
+    show.value = false
+  }else {
+    show.value = !show.value
+  }
 }
 </script>
 
 <template>
   <div>
     <header-bar>
-      <search-btn @onSearchBtnClick="openSearchModel" />
+      <search-btn @toggle-search="toggleSearchHandler" />
     </header-bar>
     <gallery class="gallery-wrapper"></gallery>
   </div>

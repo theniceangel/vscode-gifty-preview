@@ -2,18 +2,9 @@
 import Lightgallery from 'lightgallery'
 import lgZoom from 'lightgallery/plugins/zoom'
 import Menu from '../menu/index.vue'
-import { searchData } from '../search-model/autocompletePlugin'
+import { searchData } from '../search/autocompletePlugin'
 import { onMounted, ref, toRefs, inject } from 'vue'
 
-// type ImageMetaData = {
-//   remoteUrl: string
-//   size: string,
-//   width: number,
-//   height: number,
-//   name: string
-// }
-
-// const INFO = inject('imagesMetaData') as ImageMetaData[]
 const INFO = toRefs(searchData).searchRes
 
 const galleryRef = ref(null)

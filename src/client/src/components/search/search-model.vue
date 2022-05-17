@@ -6,12 +6,20 @@
 
 <script setup lang="ts">
 import { onMounted, ref, inject } from 'vue'
-import { createAutocomplate } from '../../common/ts/createAutocomplate'
+import { createAutocomplate } from './createAutocomplate'
 import { ImageMetaData, createAutocompletePlugin } from './autocompletePlugin'
+
+let imgList = ref(new Array())
+setTimeout(() => {
+  let proxy: any = inject('imagesMetaData') as ImageMetaData[]
+  debugger
+  imgList.value = proxy && proxy.value
+  console.log(333333, imgList)
+}, 300)
 
 const emit = defineEmits(['close'])
 const closeFn = (e: any) => {
-  console.log('on-search-btn-click', e.target)
+  // console.log('on-search-btn-click', e.target)
   if (e.target.className === 'search-model-wrapper') {
     emit('close')
   }
@@ -29,7 +37,7 @@ onMounted(() => {
   createAutocomplate({
     container: '#autocomplete',
     placeholder: 'Search Text',
-    plugins: [createAutocompletePlugin({ submitFn, perPage: 5 })]
+    plugins: [createAutocompletePlugin({ submitFn, perPage: 5, data: imgList.value })]
   })
 })
 
@@ -45,7 +53,7 @@ onMounted(() => {
   top 0
 .autocomplete
   width 600px
-  height 600px
+  max-height 600px
   overflow scroll
   position relative
   margin 100px auto
@@ -63,8 +71,17 @@ onMounted(() => {
   margin 100px auto
 .aa-Label svg
   color var(--c-main-color)
-.aa-Item b
-  color var(--c-main-color)
+.aa-Item
+  b
+    color var(--c-main-color)
+  img
+    width 20px
+    height 20px
+    display inline-bolck
+  .url-text
+    font-size 12px
+  .title-text
+    margin-bottom 5px
 .aa-Form
   border: 1px solid transparent
   box-shadow: none
