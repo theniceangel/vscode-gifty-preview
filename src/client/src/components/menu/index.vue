@@ -29,7 +29,7 @@ const onCopy = () => {
 
 <style lang="stylus">
 .menu-container
-  margin-top 10px
+  text-align center
   font-size 20px
   color var(--c-main-color)
 </style>

@@ -4,6 +4,7 @@ import gallery from './components/gallery/index.vue'
 import searchBtn from './components/search/search-btn.vue'
 import headerBar from './components/header-bar/index.vue'
 import searchModel from './components/search/search-model.vue'
+import { StarportCarrier } from "vue-starport"
 
 const show = ref(false)
 const toggleSearchHandler = (str: string) => {
@@ -34,7 +35,10 @@ watch(show, (newV, oldV) => {
     <header-bar>
       <search-btn @toggle-search="toggleSearchHandler" />
     </header-bar>
-    <gallery class="gallery-wrapper"></gallery>
+    <StarportCarrier>
+      <gallery class="gallery-wrapper"></gallery>
+    </StarportCarrier>
+      <!-- <RouterView class="gallery-wrapper" /> -->
   </div>
   <search-model :show="show" @close="show = false"></search-model>
 </template>
@@ -58,4 +62,20 @@ body {
 .gallery-wrapper {
   padding-top: 100px
 }
+.back-btn {
+  position: fixed;
+  top: 300px;
+  right: 100px;
+  z-index: 9;
+}
+.back-btn2 {
+  top: 400px;
+}
+/* debug transition */
+/* [data-starport-craft] {
+  background: #0805;
+}
+[data-starport-proxy]:not([data-starport-landed]) {
+  background: #8005;
+} */
 </style>
